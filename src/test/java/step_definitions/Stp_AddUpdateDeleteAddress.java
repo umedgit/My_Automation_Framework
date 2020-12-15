@@ -1,4 +1,4 @@
-package stepdefinitions;
+package step_definitions;
 
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.WebElement;

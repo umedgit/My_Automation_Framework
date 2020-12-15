@@ -1,4 +1,4 @@
-<suite name="test1" parallel="tests" thread-count="2">
+<suite name="test1" parallel="tests" thread-count="1">
 
     <test name = "chrome">
         <parameter name="browser" value="chrome"/>

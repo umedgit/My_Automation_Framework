@@ -19,10 +19,6 @@ Feature: Practice1, verify address is removed from website
     Then user is on "Login Page"
     And click on "Sign Out link"
 
-
-
-
-
 #Navigate to:  http://automationpractice.com/index.php
 #Click on sign in button
 #Click on the my addresses

@@ -1,4 +1,4 @@
-package stepdefinitions;
+package step_definitions;
 
 import pom.Pom_Abstract;
 import pom.Pom_AccountPage;

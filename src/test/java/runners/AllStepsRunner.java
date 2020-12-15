@@ -9,9 +9,9 @@ import utilities.Driver;
 
 @CucumberOptions
         (
-                features = {"src/test/java/featurefiles"},
+                features = {"src/test/java/feature_files"},
                 tags = {"@SmokeTest"},
-                glue = {"stepdefinitions"}
+                glue = {"step_definitions"}
         )
 
 
