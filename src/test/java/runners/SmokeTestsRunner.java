@@ -10,11 +10,12 @@ import utilities.Driver;
 @CucumberOptions
         (
                 features = {"src/test/java/feature_files"},
+                tags = {"@SmokeTest"},
                 glue = {"step_definitions"}
         )
 
 
-public class AllStepsRunner extends AbstractTestNGCucumberTests {
+public class SmokeTestsRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     @Parameters("browser")
     public void beforeMethod(String browser){
