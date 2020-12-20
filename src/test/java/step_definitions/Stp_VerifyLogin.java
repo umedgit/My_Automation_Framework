@@ -9,7 +9,7 @@ import utilities.Driver;
 
 public class Stp_VerifyLogin {
 
-    private Pom_Abstract pomPage = Stp_PomPageSwitch.getPomPage();
+    private Pom_Abstract pomPage = Stp_1PomPageSwitch.getPomPage();
     private WebDriver driver = Driver.getWebDriver();
 
     @When("^enter username and password$")

@@ -26,8 +26,13 @@ public class Stp_CommonSteps {
 
     @Then("^user is on \"([^\"]*)\"$")
     public void userIsOn(String pageName) {
-        Stp_PomPageSwitch.setPomPage(pageName);
-        pomPage = Stp_PomPageSwitch.getPomPage();
+        Stp_1PomPageSwitch.setPomPage(pageName);
+        pomPage = Stp_1PomPageSwitch.getPomPage();
+
+        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
+            driver.get(pomPage.getPageLink());
+        }
+
     }
 
     @When("^click on \"([^\"]*)\"$")
@@ -48,5 +53,13 @@ public class Stp_CommonSteps {
         for (Map.Entry<String, String> element: elementsAndValue.entrySet()) {
             pomPage.sendKeysFunction(element.getKey(), element.getValue());
         }
+    }
+
+    @And("^click on \"([^\"]*)\" on alert$")
+    public void clickOnOnAlert(String arg)  {
+        if (arg.equalsIgnoreCase("yes") || arg.equalsIgnoreCase("ok")){
+            driver.switchTo().alert().accept();
+        }
+        else driver.switchTo().alert().dismiss();
     }
 }

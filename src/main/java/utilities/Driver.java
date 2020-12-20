@@ -25,6 +25,8 @@ public class Driver {
     }
 
     public static WebDriver getWebDriver(){
+        // adding condition to run scenario directly without runners.
+        if (threadWebDriver.get()==null) setThreadWebDriver(null);
         return threadWebDriver.get();
     }
 

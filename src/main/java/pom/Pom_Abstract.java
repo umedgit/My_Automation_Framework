@@ -19,22 +19,20 @@ public abstract class Pom_Abstract {
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
     abstract void setWebElement(String elementName);
-
     public abstract void clickFunction(String elementName);
-
     public abstract void sendKeysFunction(String elementName, String text);
-
     public abstract String getElementText(String elementName);
-
     public abstract void selectRandomDropDown(String elementName);
-
     public abstract List<WebElement> getListOfWebelement(String elementName);
+    public abstract void clickBtnUnder(String parentElement, String childElement);
+    public abstract String getPageLink();
 
 
     void waitScrollClickFunction(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         scrollIntoElement(element);
         element.click();
+
     }
 
     void waitClearSendKeysFunction(WebElement element, String text){

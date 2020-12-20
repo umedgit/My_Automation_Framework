@@ -45,6 +45,7 @@ public class Pom_LoginPage extends Pom_Abstract {
         waitScrollClickFunction(webElement);
     }
 
+
     @Override
     public void sendKeysFunction(String elementName, String text) {
         setWebElement(elementName);
@@ -58,11 +59,20 @@ public class Pom_LoginPage extends Pom_Abstract {
 
     @Override
     public void selectRandomDropDown(String elementName) {
-
     }
 
     @Override
     public List<WebElement> getListOfWebelement(String elementName) {
         return null;
+    }
+
+    @Override
+    public void clickBtnUnder(String parentElement, String childElement) {
+
+    }
+
+    @Override
+    public String getPageLink() {
+        return "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     }
 }
