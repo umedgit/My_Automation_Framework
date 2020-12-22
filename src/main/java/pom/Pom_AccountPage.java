@@ -56,11 +56,12 @@ public class Pom_AccountPage extends Pom_Abstract {
     }
 
     @Override
-    public void clickBtnUnder(String parentElement, String childElement) {
+    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
     }
 
     @Override
     public String getPageLink() {
         return "http://automationpractice.com/index.php?controller=my-account";
     }
+
 }

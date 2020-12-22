@@ -29,9 +29,9 @@ public class Stp_CommonSteps {
         Stp_1PomPageSwitch.setPomPage(pageName);
         pomPage = Stp_1PomPageSwitch.getPomPage();
 
-        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
-            driver.get(pomPage.getPageLink());
-        }
+//        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
+//            driver.get(pomPage.getPageLink());
+//        }
 
     }
 

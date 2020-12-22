@@ -63,7 +63,7 @@ public class Pom_MyAddressesPage extends Pom_Abstract {
     }
 
     @Override
-    public void clickBtnUnder(String parentElement, String childElement) {
+    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
 
 //        WebElement element = driver.findElement(By.xpath("//h3[text()='New Address']//ancestor::ul//a[@title='Update']"));
 

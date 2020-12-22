@@ -30,4 +30,11 @@ public class Driver {
         return threadWebDriver.get();
     }
 
+    public static void quitDriver(){
+        if (threadWebDriver.get()!=null){
+            threadWebDriver.get().quit();
+            threadWebDriver.set(null);
+        }
+    }
+
 }

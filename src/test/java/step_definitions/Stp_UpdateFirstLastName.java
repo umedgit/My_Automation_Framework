@@ -2,18 +2,22 @@ package step_definitions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pom.Pom_Abstract;
+import utilities.Driver;
 
 import java.util.List;
 
 public class Stp_UpdateFirstLastName {
     private Pom_Abstract pom_page = Stp_1PomPageSwitch.getPomPage();
+    private WebDriver driver = Driver.getWebDriver();
+
 
     @When("^under \"([^\"]*)\" address click on \"([^\"]*)\"$")
     public void under_address_click_on(String parentElement, String childElement)  {
-        pom_page.clickBtnUnder(parentElement, childElement);
+        pom_page.clickBtnUnderAddressBlock(parentElement, childElement);
     }
 
 

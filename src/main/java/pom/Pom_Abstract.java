@@ -24,7 +24,7 @@ public abstract class Pom_Abstract {
     public abstract String getElementText(String elementName);
     public abstract void selectRandomDropDown(String elementName);
     public abstract List<WebElement> getListOfWebelement(String elementName);
-    public abstract void clickBtnUnder(String parentElement, String childElement);
+    public abstract void clickBtnUnderAddressBlock(String parentElement, String childElement);
     public abstract String getPageLink();
 
 

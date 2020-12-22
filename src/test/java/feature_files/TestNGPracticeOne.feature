@@ -14,7 +14,7 @@
 #Verify address is removed from the website
 
 Feature: Practice1, verify address operations
-
+  @SmokeTest
   Scenario: Successful login to the website
     Given navigate to "http://automationpractice.com/index.php"
     Then user is on "Login Page"
@@ -62,6 +62,6 @@ Feature: Practice1, verify address operations
     Given user is on "My Addresses Page"
     When under "New Address2" address click on "Delete"
     And click on "OK" on alert
-    Then address block "New Address" should be removed from the page
+    Then address block "New Address2" should be removed from the page
 
 

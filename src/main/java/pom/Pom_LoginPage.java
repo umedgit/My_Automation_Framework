@@ -32,7 +32,7 @@ public class Pom_LoginPage extends Pom_Abstract {
     void setWebElement(String elementName) {
         switch (elementName) {
             case "Sign In link":         webElement = lnkSignIn;     break;
-            case "Sign Out link":        webElement = lnkSignOut;     break;
+            case "Sign Out link":        webElement = lnkSignOut;    break;
             case "Sign In button":       webElement = btnSignIn;     break;
             case "email field":          webElement = txtEmail;      break;
             case "password field":       webElement = txtPassword;   break;
@@ -67,7 +67,7 @@ public class Pom_LoginPage extends Pom_Abstract {
     }
 
     @Override
-    public void clickBtnUnder(String parentElement, String childElement) {
+    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
 
     }
 
@@ -75,4 +75,5 @@ public class Pom_LoginPage extends Pom_Abstract {
     public String getPageLink() {
         return "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     }
+
 }
