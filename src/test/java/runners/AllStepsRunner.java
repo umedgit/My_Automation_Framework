@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import utilities.Driver;
+import utilities.DriverSingleton;
 
 
 @CucumberOptions
@@ -23,7 +23,7 @@ public class AllStepsRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     @Parameters("browser")
     public void beforeMethod(String browser){
-        Driver.setThreadWebDriver(browser);
+        DriverSingleton.setThreadWebDriver(browser);
     }
 
     @AfterClass
@@ -33,7 +33,8 @@ public class AllStepsRunner extends AbstractTestNGCucumberTests {
         Reporter.setSystemInfo("OS", System.getProperty("os.name"));
         Reporter.setSystemInfo("Environment", "QA");
 
+
         //closing the browser in thread
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 }

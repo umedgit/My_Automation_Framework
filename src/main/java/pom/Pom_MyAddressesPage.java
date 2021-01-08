@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Pom_MyAddressesPage extends Pom_Abstract {
+//This class holds hardcoded locators of the My Addresses page and implementing
+//functions of the parent Pom_Abstract class
+public class Pom_MyAddressesPage extends Abstract_PomPage {
 
     public Pom_MyAddressesPage(){
         PageFactory.initElements(driver, this);
@@ -62,7 +64,6 @@ public class Pom_MyAddressesPage extends Pom_Abstract {
         }
     }
 
-    @Override
     public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
 
 //        WebElement element = driver.findElement(By.xpath("//h3[text()='New Address']//ancestor::ul//a[@title='Update']"));
@@ -113,6 +114,5 @@ public class Pom_MyAddressesPage extends Pom_Abstract {
         }
         return listOfWebElement;
     }
-
 
 }

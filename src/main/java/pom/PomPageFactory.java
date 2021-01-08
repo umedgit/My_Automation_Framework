@@ -1,13 +1,8 @@
-package step_definitions;
+package pom;
 
-import pom.Pom_Abstract;
-import pom.Pom_AccountPage;
-import pom.Pom_LoginPage;
-import pom.Pom_MyAddressesPage;
+public class PomPageFactory {
 
-public class Stp_1PomPageSwitch {
-
-    private static ThreadLocal<Pom_Abstract> pom_abstract = new ThreadLocal<>();
+    private static ThreadLocal<Abstract_PomPage> pom_abstract = new ThreadLocal<>();
 
     public static void setPomPage(String pageName){
         switch (pageName){
@@ -17,7 +12,7 @@ public class Stp_1PomPageSwitch {
         }
     }
 
-    public static Pom_Abstract getPomPage(){
+    public static Abstract_PomPage getPomPage(){
         return pom_abstract.get();
     }
 }

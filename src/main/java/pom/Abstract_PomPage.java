@@ -6,25 +6,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.Driver;
+import utilities.DriverSingleton;
 
 import java.util.List;
 import java.util.Random;
 
 // creating abstract POM class in order to be able to reuse in Steps definitions and to switch between
 // pages.
-public abstract class Pom_Abstract {
+public abstract class Abstract_PomPage {
 
-    WebDriver driver = Driver.getWebDriver();
+    WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
+
+    //This class provides access to the functions and actions below which are called from the step definitions.
+    //The webelements are taken from the child classes.
     abstract void setWebElement(String elementName);
     public abstract void clickFunction(String elementName);
     public abstract void sendKeysFunction(String elementName, String text);
     public abstract String getElementText(String elementName);
     public abstract void selectRandomDropDown(String elementName);
     public abstract List<WebElement> getListOfWebelement(String elementName);
-    public abstract void clickBtnUnderAddressBlock(String parentElement, String childElement);
     public abstract String getPageLink();
 
 

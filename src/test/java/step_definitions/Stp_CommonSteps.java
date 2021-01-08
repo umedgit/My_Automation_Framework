@@ -6,16 +6,17 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pom.Pom_Abstract;
-import utilities.Driver;
+import pom.PomPageFactory;
+import pom.Abstract_PomPage;
+import utilities.DriverSingleton;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Stp_CommonSteps {
 
-    private Pom_Abstract pomPage;
-    private WebDriver driver = Driver.getWebDriver();
+    private Abstract_PomPage pomPage;
+    private WebDriver driver = DriverSingleton.getWebDriver();
 
     @Given("^navigate to \"([^\"]*)\"$")
     public void navigate_to(String url) {
@@ -26,13 +27,11 @@ public class Stp_CommonSteps {
 
     @Then("^user is on \"([^\"]*)\"$")
     public void userIsOn(String pageName) {
-        Stp_1PomPageSwitch.setPomPage(pageName);
-        pomPage = Stp_1PomPageSwitch.getPomPage();
-
+        PomPageFactory.setPomPage(pageName);
+        pomPage = PomPageFactory.getPomPage();
 //        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
 //            driver.get(pomPage.getPageLink());
 //        }
-
     }
 
     @When("^click on \"([^\"]*)\"$")

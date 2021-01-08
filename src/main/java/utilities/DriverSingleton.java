@@ -5,9 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Driver {
+public class DriverSingleton {
     //creating ThreadLocal Webdriver in order to be able to run tests in different browsers in parallel.
     //
+    private DriverSingleton(){}
     private static ThreadLocal<WebDriver> threadWebDriver = new ThreadLocal<>();
 
     public static void setThreadWebDriver(String browserName){

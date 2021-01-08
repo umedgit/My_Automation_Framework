@@ -6,12 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pom.Pom_Abstract;
-import utilities.Driver;
+import pom.PomPageFactory;
+import pom.Abstract_PomPage;
+import utilities.DriverSingleton;
 
 public class Stp_AddUpdateDeleteAddress {
 
-    private Pom_Abstract pomPage = Stp_1PomPageSwitch.getPomPage();
+    private Abstract_PomPage pomPage = PomPageFactory.getPomPage();
 
     @Then("^\"([^\"]*)\" form should display$")
     public void formShouldDisplay(String formName){
@@ -27,7 +28,7 @@ public class Stp_AddUpdateDeleteAddress {
     @Then("^address block \"([^\"]*)\" should be removed from the page$")
     public void addressBlockShouldBeRemovedFromThePage(String titleName) {
 
-        WebDriverWait wait = new WebDriverWait(Driver.getWebDriver(),4);
+        WebDriverWait wait = new WebDriverWait(DriverSingleton.getWebDriver(),4);
         By addressBlock = By.xpath("//h3[text()='" + titleName + "']");
         wait.until(ExpectedConditions.invisibilityOfElementLocated(addressBlock));
 

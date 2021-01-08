@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Pom_LoginPage extends Pom_Abstract {
+public class Pom_LoginPage extends Abstract_PomPage {
 
     public Pom_LoginPage() {
         PageFactory.initElements(driver, this);
@@ -64,11 +64,6 @@ public class Pom_LoginPage extends Pom_Abstract {
     @Override
     public List<WebElement> getListOfWebelement(String elementName) {
         return null;
-    }
-
-    @Override
-    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
-
     }
 
     @Override

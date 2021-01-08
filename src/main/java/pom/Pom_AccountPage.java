@@ -6,11 +6,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Pom_AccountPage extends Pom_Abstract {
+public class Pom_AccountPage extends Abstract_PomPage {
 
     public Pom_AccountPage() {
         PageFactory.initElements(driver, this);
     }
+
+
 
     //====================My Account Elements====================//
     @FindBy(css = "a[title='Addresses']")
@@ -55,9 +57,6 @@ public class Pom_AccountPage extends Pom_Abstract {
         return null;
     }
 
-    @Override
-    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
-    }
 
     @Override
     public String getPageLink() {
