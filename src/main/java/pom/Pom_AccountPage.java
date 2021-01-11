@@ -47,7 +47,7 @@ public class Pom_AccountPage extends Abstract_PomPage {
     }
 
     @Override
-    public void selectRandomDropDown(String elementName) {
+    public void selectRandomFromDropDown(String elementName) {
         setWebElement(elementName);
         selectRandomDropDown(webElement);
     }

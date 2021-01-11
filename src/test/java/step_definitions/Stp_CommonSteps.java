@@ -41,7 +41,7 @@ public class Stp_CommonSteps {
 
     @And("^randomly select an option from the \"([^\"]*)\" dropdown list$")
     public void randomlySelectAnOptionFromTheDropdownList(String elementName) {
-        pomPage.selectRandomDropDown(elementName);
+        pomPage.selectRandomFromDropDown(elementName);
     }
 
     @When("^fill the form text fields as below:$")

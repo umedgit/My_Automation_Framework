@@ -58,7 +58,7 @@ public class Pom_LoginPage extends Abstract_PomPage {
     }
 
     @Override
-    public void selectRandomDropDown(String elementName) {
+    public void selectRandomFromDropDown(String elementName) {
     }
 
     @Override

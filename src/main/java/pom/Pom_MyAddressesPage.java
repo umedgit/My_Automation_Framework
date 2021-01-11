@@ -98,7 +98,7 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
     }
 
     @Override
-    public void selectRandomDropDown(String elementName) {
+    public void selectRandomFromDropDown(String elementName) {
         setWebElement(elementName);
         selectRandomDropDown(webElement);
     }

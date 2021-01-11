@@ -25,16 +25,19 @@ public abstract class Abstract_PomPage {
     public abstract void clickFunction(String elementName);
     public abstract void sendKeysFunction(String elementName, String text);
     public abstract String getElementText(String elementName);
-    public abstract void selectRandomDropDown(String elementName);
+    public abstract void selectRandomFromDropDown(String elementName);
     public abstract List<WebElement> getListOfWebelement(String elementName);
     public abstract String getPageLink();
 
+    private void scrollIntoElement(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
 
     void waitScrollClickFunction(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         scrollIntoElement(element);
         element.click();
-
     }
 
     void waitClearSendKeysFunction(WebElement element, String text){
@@ -42,11 +45,6 @@ public abstract class Abstract_PomPage {
         scrollIntoElement(element);
         element.clear();
         element.sendKeys(text);
-    }
-
-    private void scrollIntoElement(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
     void selectRandomDropDown(WebElement elementName){
