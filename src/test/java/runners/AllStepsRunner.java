@@ -23,7 +23,7 @@ public class AllStepsRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     @Parameters("browser")
     public void beforeMethod(String browser){
-        DriverSingleton.setThreadWebDriver(browser);
+        DriverSingleton.setWebDriver(browser);
     }
 
     @AfterClass
@@ -35,6 +35,6 @@ public class AllStepsRunner extends AbstractTestNGCucumberTests {
 
 
         //closing the browser in thread
-        DriverSingleton.quitDriver();
+        DriverSingleton.quitWebDriver();
     }
 }

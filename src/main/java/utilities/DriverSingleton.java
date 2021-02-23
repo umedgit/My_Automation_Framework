@@ -11,7 +11,7 @@ public class DriverSingleton {
     private DriverSingleton(){}
     private static ThreadLocal<WebDriver> threadWebDriver = new ThreadLocal<>();
 
-    public static void setThreadWebDriver(String browserName){
+    public static void setWebDriver(String browserName){
 
         if (browserName==null || browserName.equalsIgnoreCase("Chrome")){
             WebDriverManager.chromedriver().setup();
@@ -27,11 +27,11 @@ public class DriverSingleton {
 
     public static WebDriver getWebDriver(){
         // adding condition to run scenario directly without runners.
-        if (threadWebDriver.get()==null) setThreadWebDriver(null);
+        if (threadWebDriver.get()==null) setWebDriver(null);
         return threadWebDriver.get();
     }
 
-    public static void quitDriver(){
+    public static void quitWebDriver(){
         if (threadWebDriver.get()!=null){
             threadWebDriver.get().quit();
             threadWebDriver.set(null);

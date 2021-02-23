@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pom.PomPageFactory;
-import pom.Abstract_PomPage;
+import pom.Pom_BasePage;
 import utilities.DriverSingleton;
 
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Stp_CommonSteps {
 
-    private Abstract_PomPage pomPage;
+    private Pom_BasePage pomPage;
     private WebDriver driver = DriverSingleton.getWebDriver();
 
     @Given("^navigate to \"([^\"]*)\"$")
@@ -28,7 +28,7 @@ public class Stp_CommonSteps {
     @Then("^user is on \"([^\"]*)\"$")
     public void userIsOn(String pageName) {
         PomPageFactory.setPomPage(pageName);
-        pomPage = PomPageFactory.getPomPage();
+        pomPage = new Pom_BasePage();
 //        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
 //            driver.get(pomPage.getPageLink());
 //        }

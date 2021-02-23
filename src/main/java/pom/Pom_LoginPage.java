@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Pom_LoginPage extends Abstract_PomPage {
+public class Pom_LoginPage extends Pom_AbstractPage {
 
     public Pom_LoginPage() {
         PageFactory.initElements(driver, this);
@@ -29,7 +29,7 @@ public class Pom_LoginPage extends Abstract_PomPage {
     private WebElement webElement;
 
     @Override
-    void setWebElement(String elementName) {
+    public WebElement getWebElement(String elementName) {
         switch (elementName) {
             case "Sign In link":         webElement = lnkSignIn;     break;
             case "Sign Out link":        webElement = lnkSignOut;    break;
@@ -37,28 +37,7 @@ public class Pom_LoginPage extends Abstract_PomPage {
             case "email field":          webElement = txtEmail;      break;
             case "password field":       webElement = txtPassword;   break;
         }
-    }
-
-    @Override
-    public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
-    }
-
-
-    @Override
-    public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
-    }
-
-    @Override
-    public String getElementText(String elementName) {
-        return null;
-    }
-
-    @Override
-    public void selectRandomFromDropDown(String elementName) {
+        return webElement;
     }
 
     @Override

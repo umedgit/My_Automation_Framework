@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Pom_AccountPage extends Abstract_PomPage {
+public class Pom_AccountPage extends Pom_AbstractPage {
 
     public Pom_AccountPage() {
         PageFactory.initElements(driver, this);
@@ -22,34 +22,11 @@ public class Pom_AccountPage extends Abstract_PomPage {
     private WebElement webElement;
 
     @Override
-    void setWebElement(String elementName) {
+    public WebElement getWebElement(String elementName) {
         switch (elementName) {
             case "My addresses button":       webElement = btnMyAddresses;      break;
         }
-    }
-
-    @Override
-    public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
-    }
-
-    @Override
-    public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
-    }
-
-    @Override
-    public String getElementText(String elementName) {
-        setWebElement(elementName);
-        return webElement.getText();
-    }
-
-    @Override
-    public void selectRandomFromDropDown(String elementName) {
-        setWebElement(elementName);
-        selectRandomDropDown(webElement);
+        return webElement;
     }
 
     @Override

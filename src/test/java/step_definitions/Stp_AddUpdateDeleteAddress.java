@@ -6,13 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pom.PomPageFactory;
-import pom.Abstract_PomPage;
+import pom.Pom_BasePage;
 import utilities.DriverSingleton;
 
 public class Stp_AddUpdateDeleteAddress {
 
-    private Abstract_PomPage pomPage = PomPageFactory.getPomPage();
+    private Pom_BasePage pomPage = new Pom_BasePage();
 
     @Then("^\"([^\"]*)\" form should display$")
     public void formShouldDisplay(String formName){

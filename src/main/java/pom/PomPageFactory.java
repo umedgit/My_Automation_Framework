@@ -2,7 +2,7 @@ package pom;
 
 public class PomPageFactory {
 
-    private static ThreadLocal<Abstract_PomPage> pom_abstract = new ThreadLocal<>();
+    private static ThreadLocal<Pom_AbstractPage> pom_abstract = new ThreadLocal<>();
 
     public static void setPomPage(String pageName){
         switch (pageName){
@@ -12,7 +12,7 @@ public class PomPageFactory {
         }
     }
 
-    public static Abstract_PomPage getPomPage(){
+    public static Pom_AbstractPage getPomPage(){
         return pom_abstract.get();
     }
 }

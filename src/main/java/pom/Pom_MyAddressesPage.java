@@ -1,6 +1,5 @@
 package pom;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,7 +8,7 @@ import java.util.List;
 
 //This class holds hardcoded locators of the My Addresses page and implementing
 //functions of the parent Pom_Abstract class
-public class Pom_MyAddressesPage extends Abstract_PomPage {
+public class Pom_MyAddressesPage extends Pom_AbstractPage {
 
     public Pom_MyAddressesPage(){
         PageFactory.initElements(driver, this);
@@ -46,7 +45,7 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
     private WebElement webElement;
 
     @Override
-    void setWebElement(String elementName) {
+    public WebElement getWebElement(String elementName) {
         switch (elementName) {
             case "Add a new address button":  webElement = btnAddAddress;       break;
             case "Form title":                webElement = lblFormName;         break;
@@ -62,46 +61,15 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
             case "Save Button":               webElement = btnSave;             break;
             //case "Address block":             webElement = blkAddress;          break;
         }
+        return webElement;
     }
 
-    public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
-
-//        WebElement element = driver.findElement(By.xpath("//h3[text()='New Address']//ancestor::ul//a[@title='Update']"));
-
-        WebElement element = driver.findElement(By.xpath("//h3[text()='" + parentElement +
-               "']//ancestor::ul//a[@title='" + childElement + "']"));
-
-        waitScrollClickFunction(element);
-    }
 
     @Override
     public String getPageLink() {
         return "http://automationpractice.com/index.php?controller=addresses";
     }
 
-    @Override
-    public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
-    }
-
-    @Override
-    public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
-    }
-
-    @Override
-    public String getElementText(String elementName) {
-        setWebElement(elementName);
-        return webElement.getText();
-    }
-
-    @Override
-    public void selectRandomFromDropDown(String elementName) {
-        setWebElement(elementName);
-        selectRandomDropDown(webElement);
-    }
 
     @Override
     public List<WebElement> getListOfWebelement(String elementName) {

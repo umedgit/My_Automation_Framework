@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverSingleton;
 
+import java.util.List;
 import java.util.Random;
 
-public class Pom_HasA {
+public class Pom_BasePage {
 
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
-    private  WebElement webElement;
+    private Pom_AbstractPage pomPage = PomPageFactory.getPomPage();
 
     ////////////////////////////////////////////////////
     // Class Reusable Methods
@@ -26,17 +27,17 @@ public class Pom_HasA {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    private void waitScrollClickFunction(WebElement element){
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollIntoElement(element);
-        element.click();
+    private void waitScrollClickFunction(WebElement elementName){
+        wait.until(ExpectedConditions.elementToBeClickable(elementName));
+        scrollIntoElement(elementName);
+        elementName.click();
     }
 
-    private void waitClearSendKeysFunction(WebElement element, String text){
-        wait.until(ExpectedConditions.visibilityOf(element));
-        scrollIntoElement(element);
-        element.clear();
-        element.sendKeys(text);
+    private void waitClearSendKeysFunction(WebElement elementName, String text){
+        wait.until(ExpectedConditions.visibilityOf(elementName));
+        scrollIntoElement(elementName);
+        elementName.clear();
+        elementName.sendKeys(text);
     }
 
     private void selectRandomDropDown(WebElement elementName){
@@ -45,33 +46,25 @@ public class Pom_HasA {
         dropDown.selectByIndex(random.nextInt(dropDown.getOptions().size()-1)+1);
     }
 
-    private void setWebElement(String elementName){
-        webElement = PomPageFactory.getPomPage().getWebElement(elementName);
-    }
 
     ////////////////////////////////////////////////////
     // Public Methods for Step definitions
     ///////////////////////////////////////////////////
 
     public void clickFunction(String elementName){
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
+        waitScrollClickFunction(pomPage.getWebElement(elementName));
     }
 
-
     public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
+        waitClearSendKeysFunction(pomPage.getWebElement(elementName), text);
     }
 
     public String getElementText(String elementName) {
-        setWebElement(elementName);
-        return webElement.getText();
+        return pomPage.getWebElement(elementName).getText();
     }
 
     public void selectRandomFromDropDown(String elementName) {
-        setWebElement(elementName);
-        selectRandomDropDown(webElement);
+        selectRandomDropDown(pomPage.getWebElement(elementName));
     }
 
     public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
@@ -82,6 +75,10 @@ public class Pom_HasA {
                 "']//ancestor::ul//a[@title='" + childElement + "']"));
 
         waitScrollClickFunction(element);
+    }
+
+    public List<WebElement> getListOfWebelement(String elementName){
+        return pomPage.getListOfWebelement(elementName);
     }
 
 }
