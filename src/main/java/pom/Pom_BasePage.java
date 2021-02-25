@@ -19,7 +19,7 @@ public class Pom_BasePage {
     private Pom_AbstractPage pomPage = PomPageFactory.getPomPage();
 
     ////////////////////////////////////////////////////
-    // Class Reusable Methods
+    // Local Reusable Methods
     ///////////////////////////////////////////////////
 
     private void scrollIntoElement(WebElement element){
@@ -67,6 +67,7 @@ public class Pom_BasePage {
         selectRandomDropDown(pomPage.getWebElement(elementName));
     }
 
+    //This function is currently related to My Addresses page
     public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
 
 //        WebElement element = driver.findElement(By.xpath("//h3[text()='New Address']//ancestor::ul//a[@title='Update']"));

@@ -13,16 +13,11 @@ public class Pom_LoginPage extends Pom_AbstractPage {
     }
 
     //=====================Login Page Elements==================//
-    @FindBy(linkText = "Sign in")
-    private WebElement lnkSignIn;
-    @FindBy(id = "email")
-    private WebElement txtEmail;
-    @FindBy(id = "passwd")
-    private WebElement txtPassword;
-    @FindBy(id = "SubmitLogin")
-    private WebElement btnSignIn;
-    @FindBy(linkText = "Sign out")
-    private WebElement lnkSignOut;
+    @FindBy(linkText = "Sign in")       private WebElement lnkSignIn;
+    @FindBy(id = "email")               private WebElement txtEmail;
+    @FindBy(id = "passwd")              private WebElement txtPassword;
+    @FindBy(id = "SubmitLogin")         private WebElement btnSignIn;
+    @FindBy(linkText = "Sign out")      private WebElement lnkSignOut;
 
     //====================Abstract Methods code==================//
 
