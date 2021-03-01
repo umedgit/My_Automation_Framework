@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pom.PomPageFactory;
-import pom.Pom_BasePage;
+import pom.Pom_BasePageRepo;
 import utilities.DriverSingleton;
 
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Stp_CommonSteps {
 
-    private Pom_BasePage pomPage;
+    private Pom_BasePageRepo pomPage;
     private WebDriver driver = DriverSingleton.getWebDriver();
 
     @Given("^navigate to \"([^\"]*)\"$")
@@ -28,15 +28,15 @@ public class Stp_CommonSteps {
     @Then("^user is on \"([^\"]*)\"$")
     public void userIsOn(String pageName) {
         PomPageFactory.setPomPage(pageName);
-        pomPage = new Pom_BasePage();
+        pomPage = new Pom_BasePageRepo();
 //        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
 //            driver.get(pomPage.getPageLink());
 //        }
     }
 
     @When("^click on \"([^\"]*)\"$")
-    public void click_on(String element) {
-        pomPage.clickFunction(element);
+    public void click_on(String elementName) {
+        pomPage.clickOn(elementName);
     }
 
     @And("^randomly select an option from the \"([^\"]*)\" dropdown list$")
@@ -50,7 +50,7 @@ public class Stp_CommonSteps {
         Map<String, String> elementsAndValue = dataTable.asMap(String.class, String.class);
 
         for (Map.Entry<String, String> element: elementsAndValue.entrySet()) {
-            pomPage.sendKeysFunction(element.getKey(), element.getValue());
+            pomPage.typeIn(element.getKey(), element.getValue());
         }
     }
 

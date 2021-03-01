@@ -9,14 +9,24 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverSingleton;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-public class Pom_BasePage {
+public class Pom_BasePageRepo {
 
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
     private Pom_AbstractPage pomPage = PomPageFactory.getPomPage();
+    RepositoryParser parser;
+
+    {
+        try {
+            parser = new RepositoryParser("PageObjects.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     ////////////////////////////////////////////////////
     // Local Reusable Methods
@@ -46,13 +56,17 @@ public class Pom_BasePage {
         dropDown.selectByIndex(random.nextInt(dropDown.getOptions().size()-1)+1);
     }
 
+    private WebElement getWebElement(String elementName){
+        return driver.findElement(parser.getbjectLocator(elementName.trim()));
+    }
+
 
     ////////////////////////////////////////////////////
     // Public Methods for Step definitions
     ///////////////////////////////////////////////////
 
     public void clickOn(String elementName){
-        waitScrollClickFunction(pomPage.getWebElement(elementName));
+        waitScrollClickFunction(getWebElement(elementName));
     }
 
     public void doubleClickOn(String elementName){
@@ -64,11 +78,11 @@ public class Pom_BasePage {
     }
 
     public void typeIn(String elementName, String text) {
-        waitClearSendKeysFunction(pomPage.getWebElement(elementName), text);
+        waitClearSendKeysFunction(getWebElement(elementName), text);
     }
 
     public String getElementText(String elementName) {
-        return pomPage.getWebElement(elementName).getText();
+        return getWebElement(elementName).getText();
     }
 
     public void selectFromDropDown(String elementName){
@@ -76,7 +90,7 @@ public class Pom_BasePage {
     }
 
     public void selectRandomFromDropDown(String elementName) {
-        selectRandomDropDown(pomPage.getWebElement(elementName));
+        selectRandomDropDown(getWebElement(elementName));
     }
 
     //This function is currently related to My Addresses page

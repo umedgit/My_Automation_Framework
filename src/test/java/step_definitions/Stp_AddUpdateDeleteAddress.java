@@ -30,7 +30,6 @@ public class Stp_AddUpdateDeleteAddress {
         WebDriverWait wait = new WebDriverWait(DriverSingleton.getWebDriver(),4);
         By addressBlock = By.xpath("//h3[text()='" + titleName + "']");
         wait.until(ExpectedConditions.invisibilityOfElementLocated(addressBlock));
-
         Assert.assertFalse(containsTitle(titleName));
     }
 
