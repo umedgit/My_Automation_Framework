@@ -22,7 +22,7 @@ public class Pom_BasePageRepo {
 
     {
         try {
-            parser = new RepositoryParser("PageObjects.properties");
+            parser = new RepositoryParser("src/main/resources/PageObjects.properties");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,8 +56,9 @@ public class Pom_BasePageRepo {
         dropDown.selectByIndex(random.nextInt(dropDown.getOptions().size()-1)+1);
     }
 
+    //This function is used to get Locators from PageObjects.properties file from RepositoryParser
     private WebElement getWebElement(String elementName){
-        return driver.findElement(parser.getbjectLocator(elementName.trim().replaceAll(" ","")));
+        return driver.findElement(parser.getObjectLocator(elementName));
     }
 
 
