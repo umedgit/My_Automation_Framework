@@ -14,6 +14,7 @@
 #Verify address is removed from the website
 
 Feature: Practice1, verify address operations
+
   @SmokeTest
   Scenario: Successful login to the website
     Given navigate to "http://automationpractice.com/index.php"
@@ -32,12 +33,14 @@ Feature: Practice1, verify address operations
     When click on "Add a new address button"
     Then "YOUR ADDRESSES" form should display
     When fill the form text fields as below:
+     #| Field Name | Input Value  |
       | First Name | Umed         |
       | Last Name  | Murodov      |
       | Address    | 3849 4th ave |
       | City       | Brooklyn     |
     And randomly select an option from the "State" dropdown list
     And fill the form text fields as below:
+     #| Field Name      | Input Value  |
       | Zip/Postal Code | 11218        |
       | Home phone      | 929999277    |
       | Address title   | New Address2 |
@@ -51,8 +54,9 @@ Feature: Practice1, verify address operations
     When under "New Address2" address click on "Update"
     Then "YOUR ADDRESSES" form should display
     When fill the form text fields as below:
-      | First Name | Hakim   |
-      | Last Name  | Salimov |
+     #| Field Name | Field Value |
+      | First Name | Hakim       |
+      | Last Name  | Salimov     |
     And click on "Save Button"
     Then under "New Address2" block "Hakim Salimov" should display
 

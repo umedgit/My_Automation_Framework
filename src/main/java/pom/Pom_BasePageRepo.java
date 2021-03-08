@@ -57,7 +57,7 @@ public class Pom_BasePageRepo {
     }
 
     private WebElement getWebElement(String elementName){
-        return driver.findElement(parser.getbjectLocator(elementName.trim()));
+        return driver.findElement(parser.getbjectLocator(elementName.trim().replaceAll(" ","")));
     }
 
 

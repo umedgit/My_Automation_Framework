@@ -25,19 +25,16 @@ public class RepositoryParser {
 //        System.out.println(locatorProperty.toString());
         String locatorType = locatorProperty.split(":")[0];
         String locatorValue = locatorProperty.split(":")[1];
+        System.out.println(locatorName);
+        System.out.println(locatorType);
+        System.out.println(locatorValue);
 
         By locator = null;
         switch(locatorType)
         {
-            case "id":
-                locator = By.id(locatorValue);
-                break;
-            case "name":
-                locator = By.name(locatorValue);
-                break;
-            case "cssSelector":
-                locator = By.cssSelector(locatorValue);
-                break;
+            case "id":          locator = By.id(locatorValue);          break;
+            case "name":        locator = By.name(locatorValue);        break;
+            case "cssSelector": locator = By.cssSelector(locatorValue); break;
             case "linkText":
                 locator = By.linkText(locatorValue);
                 break;
