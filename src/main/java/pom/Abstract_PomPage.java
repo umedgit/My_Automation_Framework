@@ -21,13 +21,18 @@ public abstract class Abstract_PomPage {
 
     //This class provides access to the functions and actions below which are called from the step definitions.
     //The webelements are taken from the child classes.
-    abstract void setWebElement(String elementName);
+    abstract WebElement getWebElement(String elementName);
+    public abstract List<WebElement> getListOfWebelement(String elementName);
+    public abstract String getPageLink();
+
     public abstract void clickFunction(String elementName);
     public abstract void sendKeysFunction(String elementName, String text);
     public abstract String getElementText(String elementName);
     public abstract void selectRandomFromDropDown(String elementName);
-    public abstract List<WebElement> getListOfWebelement(String elementName);
-    public abstract String getPageLink();
+
+    ///////////////////////////////////////////////////////////////
+    // Reusable functions
+    ///////////////////////////////////////////////////////////////
 
     private void scrollIntoElement(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) driver;

@@ -46,7 +46,10 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
     private WebElement webElement;
 
     @Override
-    void setWebElement(String elementName) {
+    WebElement getWebElement(String elementName) {
+
+        WebElement webElement = null;
+
         switch (elementName) {
             case "Add a new address button":  webElement = btnAddAddress;       break;
             case "Form title":                webElement = lblFormName;         break;
@@ -62,6 +65,7 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
             case "Save Button":               webElement = btnSave;             break;
             //case "Address block":             webElement = blkAddress;          break;
         }
+        return webElement;
     }
 
     public void clickBtnUnderAddressBlock(String parentElement, String childElement) {
@@ -81,26 +85,22 @@ public class Pom_MyAddressesPage extends Abstract_PomPage {
 
     @Override
     public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
+        waitScrollClickFunction(getWebElement(elementName));
     }
 
     @Override
     public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
+        waitClearSendKeysFunction(getWebElement(elementName), text);
     }
 
     @Override
     public String getElementText(String elementName) {
-        setWebElement(elementName);
-        return webElement.getText();
+        return getWebElement(elementName).getText();
     }
 
     @Override
     public void selectRandomFromDropDown(String elementName) {
-        setWebElement(elementName);
-        selectRandomDropDown(webElement);
+        selectRandomDropDown(getWebElement(elementName));
     }
 
     @Override

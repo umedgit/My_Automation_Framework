@@ -26,10 +26,9 @@ public class Pom_LoginPage extends Abstract_PomPage {
 
     //====================Abstract Methods code==================//
 
-    private WebElement webElement;
-
     @Override
-    void setWebElement(String elementName) {
+    WebElement getWebElement(String elementName) {
+        WebElement webElement = null;
         switch (elementName) {
             case "Sign In link":         webElement = lnkSignIn;     break;
             case "Sign Out link":        webElement = lnkSignOut;    break;
@@ -37,19 +36,18 @@ public class Pom_LoginPage extends Abstract_PomPage {
             case "email field":          webElement = txtEmail;      break;
             case "password field":       webElement = txtPassword;   break;
         }
+        return webElement;
     }
 
     @Override
     public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
+        waitScrollClickFunction(getWebElement(elementName));
     }
 
 
     @Override
     public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
+        waitClearSendKeysFunction(getWebElement(elementName), text);
     }
 
     @Override

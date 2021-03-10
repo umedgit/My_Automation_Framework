@@ -13,43 +13,40 @@ public class Pom_AccountPage extends Abstract_PomPage {
     }
 
 
-
     //====================My Account Elements====================//
     @FindBy(css = "a[title='Addresses']")
     private WebElement btnMyAddresses;
 
 
-    private WebElement webElement;
-
     @Override
-    void setWebElement(String elementName) {
+    WebElement getWebElement(String elementName) {
+
+        WebElement webElement = null;
+
         switch (elementName) {
             case "My addresses button":       webElement = btnMyAddresses;      break;
         }
+        return webElement;
     }
 
     @Override
     public void clickFunction(String elementName) {
-        setWebElement(elementName);
-        waitScrollClickFunction(webElement);
+        waitScrollClickFunction(getWebElement(elementName));
     }
 
     @Override
     public void sendKeysFunction(String elementName, String text) {
-        setWebElement(elementName);
-        waitClearSendKeysFunction(webElement, text);
+        waitClearSendKeysFunction(getWebElement(elementName), text);
     }
 
     @Override
     public String getElementText(String elementName) {
-        setWebElement(elementName);
-        return webElement.getText();
+        return getWebElement(elementName).getText();
     }
 
     @Override
     public void selectRandomFromDropDown(String elementName) {
-        setWebElement(elementName);
-        selectRandomDropDown(webElement);
+        selectRandomDropDown(getWebElement(elementName));
     }
 
     @Override
