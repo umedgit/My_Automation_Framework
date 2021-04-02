@@ -6,12 +6,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pom.PomPageFactory;
 import pom.Abstract_PomPage;
+import pom.PomPageFactory;
 import utilities.DriverSingleton;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class Stp_CommonSteps {
 
@@ -22,16 +21,14 @@ public class Stp_CommonSteps {
     public void navigate_to(String url) {
         driver.get(url);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Then("^user is on \"([^\"]*)\"$")
     public void userIsOn(String pageName) {
         PomPageFactory.setPomPage(pageName);
         pomPage = PomPageFactory.getPomPage();
-//        if (!driver.getCurrentUrl().equals(pomPage.getPageLink())){
-//            driver.get(pomPage.getPageLink());
-//        }
+//        pomPage.wait.until(webDriver -> ((JavascriptExecutor) driver)
+//                .executeScript("return document.readyState").toString().equals("complete"));
     }
 
     @When("^click on \"([^\"]*)\"$")

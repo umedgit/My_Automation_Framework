@@ -2,17 +2,19 @@ package step_definitions;
 
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pom.PomPageFactory;
 import pom.Abstract_PomPage;
+import pom.PomPageFactory;
 import utilities.DriverSingleton;
 
 public class Stp_AddUpdateDeleteAddress {
 
     private Abstract_PomPage pomPage = PomPageFactory.getPomPage();
+    WebDriver driver = DriverSingleton.getWebDriver();
 
     @Then("^\"([^\"]*)\" form should display$")
     public void formShouldDisplay(String formName){
@@ -31,8 +33,18 @@ public class Stp_AddUpdateDeleteAddress {
         WebDriverWait wait = new WebDriverWait(DriverSingleton.getWebDriver(),4);
         By addressBlock = By.xpath("//h3[text()='" + titleName + "']");
         wait.until(ExpectedConditions.invisibilityOfElementLocated(addressBlock));
-
         Assert.assertFalse(containsTitle(titleName));
+
+//      Different approach of checking the removed element
+
+//        boolean isRemoved = false;
+//        try {
+//            driver.findElement(addressBlock);
+//        }catch (NoSuchElementException e){
+//            isRemoved = true;
+//        }
+//        Assert.assertTrue(isRemoved);
+
     }
 
     private boolean containsTitle(String title) {

@@ -16,7 +16,7 @@ import java.util.Random;
 public abstract class Abstract_PomPage {
 
     WebDriver driver = DriverSingleton.getWebDriver();
-    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebDriverWait wait = new WebDriverWait(driver, 4);
 
 
     //This class provides access to the functions and actions below which are called from the step definitions.
