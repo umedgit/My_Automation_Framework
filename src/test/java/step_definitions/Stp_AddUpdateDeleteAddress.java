@@ -32,18 +32,7 @@ public class Stp_AddUpdateDeleteAddress {
 
         WebDriverWait wait = new WebDriverWait(DriverSingleton.getWebDriver(),4);
         By addressBlock = By.xpath("//h3[text()='" + titleName + "']");
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(addressBlock));
-        Assert.assertFalse(containsTitle(titleName));
-
-//      Different approach of checking the removed element
-
-//        boolean isRemoved = false;
-//        try {
-//            driver.findElement(addressBlock);
-//        }catch (NoSuchElementException e){
-//            isRemoved = true;
-//        }
-//        Assert.assertTrue(isRemoved);
+        Assert.assertTrue(wait.until(ExpectedConditions.invisibilityOfElementLocated(addressBlock)));
 
     }
 
