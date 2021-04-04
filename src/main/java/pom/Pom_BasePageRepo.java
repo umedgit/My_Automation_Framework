@@ -10,22 +10,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverSingleton;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Random;
 
 public class Pom_BasePageRepo {
 
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
-    private Pom_AbstractPage pomPage = PomPageFactory.getPomPage();
-    RepositoryParser parser;
+    private static RepositoryParser parser;
+    private static Pom_BasePageRepo instance;
 
-    {
-        try {
-            parser = new RepositoryParser("src/main/resources/PageObjects.properties");
-        } catch (IOException e) {
+    public static void setPageName(String pageName){
+        try{
+            parser = new RepositoryParser("src/main/resources/PageObjects.xlsx", pageName);
+        }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public static Pom_BasePageRepo getInstance(){
+        if(instance==null){
+            instance=new Pom_BasePageRepo();
+        }
+        return instance;
     }
 
     ////////////////////////////////////////////////////
@@ -103,10 +109,6 @@ public class Pom_BasePageRepo {
                 "']//ancestor::ul//a[@title='" + childElement + "']"));
 
         waitScrollClickFunction(element);
-    }
-
-    public List<WebElement> getListOfWebelement(String elementName){
-        return pomPage.getListOfWebelement(elementName);
     }
 
 }

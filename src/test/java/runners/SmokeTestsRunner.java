@@ -5,6 +5,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import utilities.DriverSingleton;
 
@@ -23,7 +24,7 @@ import utilities.DriverSingleton;
 public class SmokeTestsRunner extends AbstractTestNGCucumberTests {
     @BeforeClass
     @Parameters("browser")
-    public void beforeMethod(String browser){
+    public void beforeMethod(@Optional("chrome")String browser){
         DriverSingleton.setWebDriver(browser);
     }
 
