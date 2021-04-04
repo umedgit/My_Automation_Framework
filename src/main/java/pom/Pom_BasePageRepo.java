@@ -17,21 +17,21 @@ public class Pom_BasePageRepo {
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
     private static RepositoryParser parser;
-    private static Pom_BasePageRepo instance;
+    private static ThreadLocal<Pom_BasePageRepo> instance = new ThreadLocal<>();
 
     public static void setPageName(String pageName){
         try{
-            parser = new RepositoryParser("src/main/resources/PageObjects.xlsx", pageName);
+            parser = new RepositoryParser("src/main/resources/PageObjects.xls", pageName);
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
     public static Pom_BasePageRepo getInstance(){
-        if(instance==null){
-            instance=new Pom_BasePageRepo();
+        if(instance.get()==null){
+            instance.set(new Pom_BasePageRepo());
         }
-        return instance;
+        return instance.get();
     }
 
     ////////////////////////////////////////////////////

@@ -18,7 +18,6 @@ public class RepositoryParser {
         FileInputStream inputStream = new FileInputStream(filePath);
         Workbook workbook = WorkbookFactory.create(inputStream);
         pageSheet = workbook.getSheet(pageName);
-
     }
 
     //This function is requested from Pom_BasePage in order to get WebElements By object
@@ -27,7 +26,6 @@ public class RepositoryParser {
         Row row;
         String locatorType = null, locatorValue = null;
         int rowCount = pageSheet.getPhysicalNumberOfRows();
-
 
         for (int i=1; i < rowCount; i++){
             row = pageSheet.getRow(i);
