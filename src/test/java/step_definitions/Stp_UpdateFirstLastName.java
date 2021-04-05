@@ -4,12 +4,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pom.Pom_BasePage;
+import pom.BasePageNMethods;
 
 import java.util.List;
 
 public class Stp_UpdateFirstLastName {
-    private Pom_BasePage pomPage = new Pom_BasePage();
+    //private Pom_BasePage pomPage = new Pom_BasePage();
+    private BasePageNMethods pomPage = BasePageNMethods.getInstance();
 
     @When("^under \"([^\"]*)\" address click on \"([^\"]*)\"$")
     public void under_address_click_on(String parentElement, String childElement)  {
@@ -19,7 +20,7 @@ public class Stp_UpdateFirstLastName {
     @Then("^under \"([^\"]*)\" block \"([^\"]*)\" should display$")
     public void underBlockShouldDisplay(String addressTitle, String name)  {
 
-        List<WebElement> lstAddressBlk = pomPage.getListOfWebelement("Address block");
+        List<WebElement> lstAddressBlk = pomPage.getListOfWebElement("Address block");
         boolean contains=false;
 
         for(WebElement element: lstAddressBlk){

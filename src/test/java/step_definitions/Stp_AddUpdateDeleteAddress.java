@@ -6,12 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pom.Pom_BasePage;
+import pom.BasePageNMethods;
 import utilities.DriverSingleton;
 
 public class Stp_AddUpdateDeleteAddress {
 
-    private Pom_BasePage pomPage = new Pom_BasePage();
+//    private Pom_BasePage pomPage = new Pom_BasePage();
+    private BasePageNMethods pomPage = BasePageNMethods.getInstance();
 
     @Then("^\"([^\"]*)\" form should display$")
     public void formShouldDisplay(String formName){
@@ -34,7 +35,7 @@ public class Stp_AddUpdateDeleteAddress {
     }
 
     private boolean containsTitle(String title) {
-        for (WebElement element : pomPage.getListOfWebelement("Address Subheading")) {
+        for (WebElement element : pomPage.getListOfWebElement("Address Subheading")) {
             if(element.getText().equalsIgnoreCase(title)) return true;
         }
         return false;

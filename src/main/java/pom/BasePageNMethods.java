@@ -10,63 +10,40 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverSingleton;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
-public class Pom_BasePageRepo {
+public class BasePageNMethods {
 
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
-    private static RepositoryParser parser;
-    private static ThreadLocal<Pom_BasePageRepo> instance = new ThreadLocal<>();
+    private static ThreadLocal<RepositoryParser> parser = new ThreadLocal<>();
+    private static ThreadLocal<BasePageNMethods> instance = new ThreadLocal<>();
 
     public static void setPageName(String pageName){
         try{
-            parser = new RepositoryParser("src/main/resources/PageObjects.xls", pageName);
+            parser.set(new RepositoryParser("src/main/resources/PageObjects.xls", pageName));
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public static Pom_BasePageRepo getInstance(){
+    public static BasePageNMethods getInstance(){
         if(instance.get()==null){
-            instance.set(new Pom_BasePageRepo());
+            instance.set(new BasePageNMethods());
         }
         return instance.get();
     }
 
-    ////////////////////////////////////////////////////
-    // Local Reusable Methods
-    ///////////////////////////////////////////////////
-
-    private void scrollIntoElement(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+    //////////////////////////////////////////////////////
+    //This function is used to get Locators from PageObjects.xls file from RepositoryParser
+    public WebElement getWebElement(String elementName){
+        return driver.findElement(parser.get().getObjectLocator(elementName));
     }
 
-    private void waitScrollClickFunction(WebElement elementName){
-        wait.until(ExpectedConditions.elementToBeClickable(elementName));
-        scrollIntoElement(elementName);
-        elementName.click();
+    public List<WebElement> getListOfWebElement(String elementName){
+        return driver.findElements(parser.get().getObjectLocator(elementName));
     }
-
-    private void waitClearSendKeysFunction(WebElement elementName, String text){
-        wait.until(ExpectedConditions.visibilityOf(elementName));
-        scrollIntoElement(elementName);
-        elementName.clear();
-        elementName.sendKeys(text);
-    }
-
-    private void selectRandomDropDown(WebElement elementName){
-        Select dropDown = new Select(elementName);
-        Random random = new Random();
-        dropDown.selectByIndex(random.nextInt(dropDown.getOptions().size()-1)+1);
-    }
-
-    //This function is used to get Locators from PageObjects.properties file from RepositoryParser
-    private WebElement getWebElement(String elementName){
-        return driver.findElement(parser.getObjectLocator(elementName));
-    }
-
 
     ////////////////////////////////////////////////////
     // Public Methods for Step definitions
@@ -111,4 +88,31 @@ public class Pom_BasePageRepo {
         waitScrollClickFunction(element);
     }
 
+    ////////////////////////////////////////////////////
+    // Local Reusable Methods
+    ///////////////////////////////////////////////////
+
+    private void scrollIntoElement(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    private void waitScrollClickFunction(WebElement elementName){
+        wait.until(ExpectedConditions.elementToBeClickable(elementName));
+        scrollIntoElement(elementName);
+        elementName.click();
+    }
+
+    private void waitClearSendKeysFunction(WebElement elementName, String text){
+        wait.until(ExpectedConditions.visibilityOf(elementName));
+        scrollIntoElement(elementName);
+        elementName.clear();
+        elementName.sendKeys(text);
+    }
+
+    private void selectRandomDropDown(WebElement elementName){
+        Select dropDown = new Select(elementName);
+        Random random = new Random();
+        dropDown.selectByIndex(random.nextInt(dropDown.getOptions().size()-1)+1);
+    }
 }
