@@ -42,5 +42,6 @@ public class Hooks {
                 e.printStackTrace();
             }
         }
+//        DriverSingleton.quitWebDriver();
     }
 }
