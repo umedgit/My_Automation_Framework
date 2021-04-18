@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 //In this class we are going to map the PageObjects.xls locatorTypes and Values
-//The object of this class is created in Pom_Base_Page
+//The object of this class is created in BasePage class
 public class RepositoryParser {
 
     Sheet pageSheet;
@@ -19,7 +19,7 @@ public class RepositoryParser {
         pageSheet = workbook.getSheet(pageName);
     }
 
-    //This function is requested from Pom_BasePage in order to get WebElements By object
+    //This function is requested from BasePage in order to get By object
     public By getObjectLocator(String locatorName) {
         Row row;
         String locatorType = null, locatorValue = null;

@@ -13,12 +13,16 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-public class BasePageNMethods {
+public class BasePage {
+
+    //This class created as a Singleton instance, so ThreadLocal
+    // variables are used in order to use parallel testing
 
     WebDriver driver = DriverSingleton.getWebDriver();
     WebDriverWait wait = new WebDriverWait(driver, 10);
+
     private static ThreadLocal<RepositoryParser> parser = new ThreadLocal<>();
-    private static ThreadLocal<BasePageNMethods> instance = new ThreadLocal<>();
+    private static ThreadLocal<BasePage> instance = new ThreadLocal<>();
 
     public static void setPageName(String pageName){
         try{
@@ -28,9 +32,10 @@ public class BasePageNMethods {
         }
     }
 
-    public static BasePageNMethods getInstance(){
+    //Using Singleton design pattern in order to getInstance
+    public static BasePage getInstance(){
         if(instance.get()==null){
-            instance.set(new BasePageNMethods());
+            instance.set(new BasePage());
         }
         return instance.get();
     }
@@ -41,7 +46,7 @@ public class BasePageNMethods {
         return driver.findElement(parser.get().getObjectLocator(elementName));
     }
 
-    public List<WebElement> getListOfWebElement(String elementName){
+    public List<WebElement> getListOfaWebElement(String elementName){
         return driver.findElements(parser.get().getObjectLocator(elementName));
     }
 

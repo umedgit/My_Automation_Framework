@@ -4,12 +4,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import pom.BasePageNMethods;
+import pom.BasePage;
 import utilities.DriverSingleton;
 
 public class Stp_VerifyLogin {
 
-    private BasePageNMethods pomPage = new BasePageNMethods();
+    private BasePage pomPage = new BasePage();
     private WebDriver driver = DriverSingleton.getWebDriver();
 
     @When("^enter username and password$")
