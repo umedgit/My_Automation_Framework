@@ -6,11 +6,12 @@ public class PomPageFactory {
 
     public static void setPomPage(String pageName){
         switch (pageName){
-            case "Login Page":              pom_abstract.set(new Pom_LoginPage());          break;
-            case "My Account Page":         pom_abstract.set(new Pom_AccountPage());        break;
-            case "My Addresses Page":       pom_abstract.set(new Pom_MyAddressesPage());    break;
-        }
+        case "Login Page":              pom_abstract.set(new Pom_LoginPage());          break;
+        case "My Account Page":         pom_abstract.set(new Pom_AccountPage());        break;
+        case "My Addresses Page":       pom_abstract.set(new Pom_MyAddressesPage());    break;
+        case "Amazon Main Page":        pom_abstract.set(new Pom_Amazon_MainPage());    break;
     }
+}
 
     public static Abstract_PomPage getPomPage(){
         return pom_abstract.get();

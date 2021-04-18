@@ -18,18 +18,18 @@ Feature: Practice1, verify address operations
   Scenario: Successful login to the website
     Given navigate to "http://automationpractice.com/index.php"
     Then user is on "Login Page"
-    When click on "Sign In link"
+    When user clicks on "Sign In link"
     And enter username and password
-    And click on "Sign In button"
+    And user clicks on "Sign In button"
     Then user should login successfully
 
     ############################################################################
 
   Scenario: Verify the new address added to the account
     Given user is on "My Account Page"
-    When click on "My addresses button"
+    When user clicks on "My addresses button"
     Then user is on "My Addresses Page"
-    When click on "Add a new address button"
+    When user clicks on "Add a new address button"
     Then "YOUR ADDRESSES" form should display
     When fill the form text fields as below:
       | First Name | Umed         |
@@ -41,7 +41,7 @@ Feature: Practice1, verify address operations
       | Zip/Postal Code | 11218        |
       | Home phone      | 929999277    |
       | Address title   | New Address2 |
-    And click on "Save Button"
+    And user clicks on "Save Button"
     Then new address with Address title "New Address2" should display
 
     ############################################################################
@@ -53,7 +53,7 @@ Feature: Practice1, verify address operations
     When fill the form text fields as below:
       | First Name | Hakim   |
       | Last Name  | Salimov |
-    And click on "Save Button"
+    And user clicks on "Save Button"
     Then under "New Address2" block "Hakim Salimov" should display
 
     ############################################################################

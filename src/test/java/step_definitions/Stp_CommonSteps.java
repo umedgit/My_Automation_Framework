@@ -31,7 +31,7 @@ public class Stp_CommonSteps {
 //                .executeScript("return document.readyState").toString().equals("complete"));
     }
 
-    @When("^click on \"([^\"]*)\"$")
+    @When("^user clicks on \"([^\"]*)\"$")
     public void click_on(String element) {
         pomPage.clickFunction(element);
     }
@@ -57,5 +57,10 @@ public class Stp_CommonSteps {
             driver.switchTo().alert().accept();
         }
         else driver.switchTo().alert().dismiss();
+    }
+
+    @When("^user types \"([^\"]*)\" into \"([^\"]*)\"$")
+    public void userTypesInto(String text, String elementName) {
+        pomPage.sendKeysFunction(elementName, text);
     }
 }
