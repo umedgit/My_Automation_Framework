@@ -22,7 +22,7 @@ public class BasePage {
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
     private static ThreadLocal<RepositoryParser> parser = new ThreadLocal<>();
-    private static BasePage instance = new BasePage();
+    private static ThreadLocal<BasePage> instance = new ThreadLocal<>();
 
     public static void setPageName(String pageName){
         try{
